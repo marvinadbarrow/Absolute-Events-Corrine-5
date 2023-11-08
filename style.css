@@ -1,0 +1,246 @@
+*{box-sizing: border-box;}
+.about{margin-top:0px; width: 100%;}
+
+.float-btn{font-size: 20px;}
+
+.nav-bar{position: fixed; width: 100%; padding: 1%; display: flex; flex-direction: row; justify-content: space-around; z-index: 2;}
+
+.mission-statement{margin-top: 200px;}
+
+.card-body{overflow: hidden; box-shadow: 0px 2px 10px rgba(128, 128, 128, 0); width: 70%; margin: auto; border-radius: 10px; position: relative; padding: 16px 16px;margin-top: 2%; margin-bottom: 15%; height: fit-content;}
+
+
+
+
+body{background-image: url('/images/conference\ b.jpg');}
+
+footer{display: flex; width: 100%;}
+.footer-bottom{ padding: 3%; }
+
+
+.contact-elements{width: 60%; height: fit-content;}
+
+.container{display: flex; flex-direction: row; justify-content: space-around; width: 100vw; margin: auto; margin-left: 0px;}
+.t-cards{width: 30%; height: fit-content; padding: 2%; border-radius: 10px; position: relative; margin: 20px 0px; background-color: rgba(206, 199, 199, 0.466); box-shadow: 0px 2px 20px rgb(204, 203, 203);}
+
+
+
+
+.raves{margin-top: 100px;}
+
+.navlink_1, .navlink_2, .navlink_3{
+    font-size: small;
+    margin-right: 20px;
+}
+
+
+
+
+.contact-info{display: flex; flex-direction: row; justify-content: space-around; width: fit-content; height: auto;}
+.contact-link{width: fit-content; height: auto; margin-right: 20px;}
+
+.home{width: 100%;}
+body{width: 100vw; padding: 0;}
+.copy-para{font-size: 15px;}
+.social-top{width: fit-content; height: auto; display: block; }
+.social-links{margin-right:20px;}
+
+.social-top a {padding: 15px; color: rgb(170, 169, 169);}
+
+.container{width: 100%; height: fit-content; background-color: black;}
+.container2{width: 100%; height: 200px; background-color: grey;}
+.nav-bar{ position: fixed; top: 0;}
+
+.header-nav{
+position: sticky;
+top: 0;
+margin-top: 200px;
+width: 100%;
+height: 100px;
+padding: 10px;
+box-sizing: border-box;
+background: rgba(0, 0, 0, 0);
+border-bottom: 0px solid white;
+z-index: 20;
+
+}
+
+
+
+
+
+
+
+.logo{float: left;
+height: 90%;
+margin-left: 50px;
+}
+.btn-top-nav{float: right; margin-right: 30px; display: none;}
+.header-link-container{float: right; margin-right: 20%;}
+
+.header-link{text-decoration: none;
+font-size: 20px;
+color: rgb(218, 216, 216);
+padding: 10px 30px;
+border-radius: 10px;
+transition: 0.3s ease-in-out;
+}
+.header-link:hover{background-color: rgba(184, 187, 189, 0.478);}
+
+.fix-header-nav{
+     background: rgba(0, 0, 0, 0.7);
+border-bottom: 1px solid white;
+}
+
+#services-main{position: relative;}
+
+#services-list-container{
+position: absolute; 
+top: -10px;
+left: 0; 
+background-color: rgba(184, 187, 189, 0.473);; 
+box-shadow: 2px 2px 40px rgb(36, 35, 35);
+width: 300px; 
+border-radius: 7px;
+padding: 7px;
+display: none;
+transition: 0.4s ease-in-out;
+
+}
+
+.services-link{
+padding: 15px; 
+border-radius: 7px; 
+list-style: none;
+transition: 0.4s ease-in-out;
+}
+
+.services-link:hover{background-color: black; color: white;}
+
+
+#learn-btn-lower{float: right; display: none; margin-right: 20px;}
+
+.transform-menu{
+    transform: translateY(35px);
+}
+
+@keyframes slideDown {
+    0% { 
+      opacity: 0;
+      transform: translateY(0px)
+    }
+
+
+    100% {
+      opacity: 1;
+      transform: translateY(35px)
+    }
+  }
+
+/* .services-main:hover .services-list-container{
+    display: block;
+} */
+
+
+
+/* for the main black nav bar to fade out  as it moves up out of the screen view when scrolling past 300px occurs) */
+@keyframes mainNavOpacityUp {
+
+    0%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    
+    100%{
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+}
+
+@keyframes mainNavOpacityDown {
+
+    0%{
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+    
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* for the header (transparent bar beneath main nav) bar  scrolling past 300px occurs) */
+@keyframes headerNav2OpacityUp {
+
+    0%{
+        background-color: rgba(184, 187, 189, 0);
+        border-bottom: 1px solid rgba(255, 255, 255, 0);
+    }
+
+
+    100%{
+                background-color: rgba(26, 26, 26, 0.575);
+        border-bottom: 1px solid white;
+
+        /*
+        an alternative colour
+                background-color: rgba(0, 0, 0, 0.7);
+                */
+    }
+}
+
+
+
+
+
+@keyframes headerNavOpacityDown {
+
+    0%{
+        background-color: rgba(26, 26, 26, 0.575);
+        border-bottom: 1px solid white;
+    }
+    
+    100%{
+        background-color: rgba(184, 187, 189, 0);
+        border-bottom: 1px solid rgba(255, 255, 255, 0);
+    }
+}
+
+
+
+
+
+
+@keyframes btnOpacity {
+    0%{
+        opacity: 0;
+
+    }
+    
+    100%{
+opacity: 1;
+    }
+
+}
+
+@keyframes btnUnOpacity {
+    0%{
+        opacity: 1;
+
+    }
+    
+    100%{
+opacity: 0;
+    }
+
+}
