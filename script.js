@@ -2,7 +2,7 @@ let navbarEl = document.getElementById('nav-bar')
 let headerNavEl = document.getElementById('header-nav')
 let btnTopNav = document.getElementById('btn-top-nav')
 let lowerBtn = document.getElementById('learn-btn-lower')
-
+let hamburgerEl = document.getElementById('hamburger-bars')
 console.log('nav bar')
 console.log(navbarEl)
 
@@ -45,6 +45,8 @@ lowerBtn.style.animation = 'btnOpacity 1.4s ease-out forwards'
   lowerBtn.style.display = 'none'
 lowerBtn.style.animation = 'btnUnOpacity 1.4s ease-out forwards'
 }
+
+  }else{
 
   }
 
@@ -118,3 +120,13 @@ serviceEl.addEventListener('mouseover', (event) =>{
 
 
 
+hamburgerEl.addEventListener('click', (e) =>{
+  e.preventDefault()
+  console.log('menu click')
+  if(headerNavEl.style.display == 'flex'){
+    headerNavEl.style.display = 'none'
+  }else{
+    headerNavEl.style.display = 'flex'
+  }
+  
+})

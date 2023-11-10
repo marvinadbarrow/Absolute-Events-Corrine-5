@@ -43,9 +43,9 @@ footer{display: flex; width: 100%;}
 body{width: 100vw; padding: 0;}
 .copy-para{font-size: 15px;}
 .social-top{width: fit-content; height: auto; display: block; }
-.social-links{margin-right:20px;}
+.social-links{margin-right:10px;}
 
-.social-top a {padding: 15px; color: rgb(170, 169, 169);}
+.social-top a {padding: 5px; color: rgb(170, 169, 169);}
 
 .container{width: 100%; height: fit-content; background-color: black;}
 .container2{width: 100%; height: 200px; background-color: grey;}
@@ -124,6 +124,10 @@ transition: 0.4s ease-in-out;
 
 .transform-menu{
     transform: translateY(35px);
+}
+
+.toggle-display{
+    display: block;
 }
 
 @keyframes slideDown {
@@ -268,7 +272,7 @@ opacity: 0;
     flex-direction: column;
     }
     .header-link{background-color: rgba(0, 0, 0, 0.568); color: white; border-radius: 0px; border-bottom: 1px solid rgb(136, 133, 133); text-align: center;}
-    .header-nav{margin: 200px 0px 0px 0px; display: flex; flex-direction: column; width: 100%; height: fit-content; position: relative; top: -150px; margin-left:8%;}
+    .header-nav{margin: 200px 0px 0px 0px; display: flex; flex-direction: column; width: 100%; height: fit-content; position: relative; top: -150px; margin-left:8%; display: none;}
     .learn-btn-lower{width: 100%;}
     .t-cards{width: 60%;}
 
