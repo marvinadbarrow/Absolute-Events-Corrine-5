@@ -16,6 +16,9 @@ console.log(headerNavEl)
 // on scroll down 
 window.onscroll = () =>{
 
+  // only execute animation if window is outside of media query limit
+  if(window.innerWidth > 1000){
+
 // if downward scroll passes 300px
 if(window.scrollY > 150){
 
@@ -42,6 +45,9 @@ lowerBtn.style.animation = 'btnOpacity 1.4s ease-out forwards'
   lowerBtn.style.display = 'none'
 lowerBtn.style.animation = 'btnUnOpacity 1.4s ease-out forwards'
 }
+
+  }
+
 
 
 // if(-window.scrollY < 280){
@@ -77,7 +83,7 @@ let navContainer = document.getElementById('navigation-container')
 
 
 
-
+if(window.innerWidth > 1000){
 
 
 // animate dropdown menu when service menu is hovered over
@@ -105,5 +111,10 @@ serviceEl.addEventListener('mouseover', (event) =>{
   serviceList.style.cssText = 'display:none;'
   serviceList.classList.remove('transform-menu')
  })
+
+}
+
+
+
 
 
