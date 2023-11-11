@@ -95,7 +95,7 @@ transition: 0.3s ease-in-out;
 /* below is the sub menu items of the drop down menu in header nav when the media query has been activated for smaller screens */
 
 .services-menu-mobile{
-background-color: rgb(136, 133, 133); 
+    background-color: rgba(141, 164, 179, 0.473);
 border-radius: 0px; 
 border-bottom: 1px solid rgb(235, 230, 230); 
 text-align: center;
@@ -104,6 +104,9 @@ color: rgb(218, 216, 216);
 padding: 10px 30px;
 text-decoration: none;
 display: none;
+border-bottom: 1px solid rgb(136, 133, 133);
+transition: 0.9s ease-in-out;
+opacity: 0;
 }
 
 
@@ -120,7 +123,7 @@ border-bottom: 1px solid white;
 position: absolute; 
 top: -10px;
 left: 0; 
-background-color: rgba(184, 187, 189, 0.473);; 
+background-color: rgba(184, 187, 189, 0.473);
 box-shadow: 2px 2px 40px rgb(36, 35, 35);
 width: 300px; 
 border-radius: 7px;

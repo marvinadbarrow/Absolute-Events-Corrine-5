@@ -93,10 +93,12 @@ let submenuOpen = 0
       // loop through node list, and on each element, toggle display none/block
       mobileServiceLinks.forEach(link =>{
         if(link.style.display == 'block'){
+
           link.style.display = 'none'
 
           submenuOpen = 0
         }else{
+          link.style.animation = 'btnOpacity 0.5s ease-out forwards'
           link.style.display = 'block'
 
         submenuOpen = 1
