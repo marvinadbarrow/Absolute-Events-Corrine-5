@@ -54,8 +54,6 @@ body{width: 100vw; padding: 0;}
 
 .social-top a {padding: 5px; color: rgb(170, 169, 169);}
 
-
-
 .header-nav{
 position: sticky;
 top: 0;
@@ -70,12 +68,6 @@ z-index: 20;
 padding-bottom: 60px;
 
 }
-
-
-
-
-
-
 
 .logo{float: left;
 height: 90%;
@@ -95,12 +87,12 @@ transition: 0.3s ease-in-out;
 /* below is the sub menu items of the drop down menu in header nav when the media query has been activated for smaller screens */
 
 .services-menu-mobile{
-    background-color: rgba(141, 164, 179, 0.473);
+    background-color: rgb(255, 255, 255);
 border-radius: 0px; 
 border-bottom: 1px solid rgb(235, 230, 230); 
 text-align: center;
 font-size: 20px;
-color: rgb(218, 216, 216);
+color: rgb(12, 12, 12);
 padding: 10px 30px;
 text-decoration: none;
 display: block;
@@ -108,12 +100,17 @@ border-bottom: 1px solid rgb(136, 133, 133);
 transition: 0.9s ease-in-out;
 opacity: 1;
 }
+.services-menu-mobile:hover{
+background-color: rgb(70, 137, 224);
+color: rgb(255, 255, 255);
+}
 
 #mobile-services-container{
 width: inherit; 
 height: fit-content; 
 display: none;
-background-color: rgba(255, 47, 47, 0.76);
+background-color: rgba(24, 24, 24, 0.644);
+
 }
 
 .header-link:hover{background-color: rgba(184, 187, 189, 0.478);}
@@ -244,7 +241,7 @@ transition: 0.4s ease-in-out;
 
 
 /* opacity of buttons on scrolling past threshold of 300px */
-@keyframes btnOpacity {
+@keyframes opacityOn {
     0%{
         opacity: 0;
 
@@ -256,7 +253,7 @@ opacity: 1;
 
 }
 
-@keyframes btnUnOpacity {
+@keyframes opacityOff {
     0%{
         opacity: 1;
 
@@ -269,6 +266,28 @@ opacity: 0;
 }
 
 
+@keyframes mobileSubMenuOpen {
+    0%{
+        margin-top: -80px;
+
+    }
+    
+    100%{
+margin-top: 0px;
+    }
+}
+
+
+@keyframes mobileSubMenuClose {
+    0%{
+        margin-top: 0px;
+
+    }
+    
+    100%{
+margin-top: -80px;
+    }
+}
 
 
 

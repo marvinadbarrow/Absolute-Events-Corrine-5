@@ -39,7 +39,7 @@ if(window.scrollY > 150){
 
 headerNavEl.style.animation =  'headerNav2OpacityUp 1.4s ease-out forwards'
 lowerBtn.style.display = 'block'
-lowerBtn.style.animation = 'btnOpacity 1.4s ease-out forwards'
+lowerBtn.style.animation = 'opacityOn 1.4s ease-out forwards'
 if(serviceLink){
   serviceLink.style.cssText = 'padding: 10px 10px;'
 }
@@ -51,7 +51,7 @@ if(serviceLink){
   navbarEl.style.animation =  'mainNavOpacityDown 0.5s ease-out backwards'
    headerNavEl.style.animation =  'headerNav2OpacityDown 1.4s ease-out backwards'
   lowerBtn.style.display = 'none'
-lowerBtn.style.animation = 'btnUnOpacity 1.4s ease-out forwards'
+lowerBtn.style.animation = 'opacityOff 1.4s ease-out forwards'
 // if(!serviceLink.style.display == 'none'){
 //   serviceLink.style.cssText = 'padding: 10px 30px;'
 // }
@@ -91,9 +91,12 @@ const serviceHoverSmallScreen = (event) =>{
   timesHoveredSmall +=1;
   // hide the regular drop down
   serviceList.style.cssText = 'display:none;'
+mobileServicesContainer.style.animation = 'mobileSubMenuOpen 0.3s ease-out backwards'
+  // mobileServicesContainer.style.cssText = 'margin-top:0px;'
   mobileServicesContainer.style.display = 'block'
-  
-}
+  // use the inactive class to tell the
+  mobileServicesContainer.classList.add('inactive')
+  }
 
 
 
@@ -111,6 +114,7 @@ currentWidth = e.target.innerWidth
 if(currentWidth > 999){
   headerNavEl.style.display = 'flex'
   mobileServicesContainer.style.display = 'none'
+  serviceEl.style.cssText = 'background-color: none'
 }
 })
 
@@ -129,6 +133,10 @@ if(currentWidth > 999){
          // code to execute for small window sizes
       serviceHoverSmallScreen(event)
     }
+
+   // add highlight if taken away by exiting through the submenu items
+      // serviceEl.style.cssText = 'background-color:rgba(184, 187, 189, 0.473);'
+    
   
    })
   
@@ -138,6 +146,9 @@ serviceEl.addEventListener('mouseout', (event) =>{
   // for regular sized screens
   serviceList.style.cssText = 'display:none;'
   serviceList.classList.add('transform-menu')
+
+
+
 } )
 
 // on every header nav link, except the services link, on mouseover hide the container for services submenu when page is in mobile view
@@ -145,7 +156,9 @@ headerNavElements.forEach(element => {
   if(element.tagName == 'A' && element.id == ''){
 // if element on the nodelist is an 'a' tage and has no id then it is not the services link so hide the mobile submenu for services
 element.addEventListener('mouseover', () =>{
+  
   mobileServicesContainer.style.display = 'none'
+  // serviceEl.style.cssText = 'background-color: rgba(0, 0, 0, 0.568);'
 })
   }
 });
@@ -155,6 +168,13 @@ element.addEventListener('mouseover', () =>{
 
 mobileServicesContainer.addEventListener('mouseleave', () =>{
   mobileServicesContainer.style.display = 'none'
+  // remove highlight colour from main services div
+  serviceEl.style.cssText = 'background-color: rgba(0, 0, 0, 0.568);'
+})
+
+mobileServicesContainer.addEventListener('mouseover', () =>{
+  // keep highlight on main services div while mouse pointer is over the submenu
+  // serviceEl.style.cssText = 'background-color:rgba(184, 187, 189, 0.473);'
 })
 hamburgerEl.addEventListener('click', (e) =>{
   e.preventDefault()
@@ -163,12 +183,14 @@ hamburgerEl.addEventListener('click', (e) =>{
     if(headerNavEl.style.display == 'flex'){
       if(window.innerWidth < 1000){
       headerNavEl.style.display = 'none'
+
       }else{
         // do n
       }
     }else{
       
       headerNavEl.style.display = 'flex'
+      headerNavEl.style.animation = 'opacityOn 1.4s ease-out forwards'
     }
   
 
