@@ -161,17 +161,17 @@ console.log('below the threshold')
   
 
 
-// serviceEl.addEventListener('mouseout', (event) =>{
-//   // for regular sized screens
-//   serviceList.style.cssText = 'display:none;'
-//   serviceList.classList.add('transform-menu')
+serviceEl.addEventListener('mouseout', (event) =>{
+  // for regular sized screens
+  serviceList.style.cssText = 'display:none;'
+  serviceList.classList.add('transform-menu')
 
-//   // for screens that meet the media query consitions
-//   mobileServiceLinks.forEach(link =>{
-//       link.style.display = 'none'
-//     })
+  // for screens that meet the media query consitions
+  mobileServiceLinks.forEach(link =>{
+      link.style.display = 'none'
+    })
 
-// } )
+} )
 
 
    
