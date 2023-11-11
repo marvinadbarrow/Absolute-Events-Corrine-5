@@ -24,7 +24,7 @@ console.log(window.innerWidth)
 // on scroll down 
 window.onscroll = () =>{
   // only execute animation if window is outside of media query limit
-  // this only works if the window width is greater than 1000; but there's the issue that if user has already scrolled down, and THEN the window width goes below 1000, you won't be able to undo the effect that has already happened because both scroll up and scroll down can only happen when the window width is greater than 1000.  So if window width changes between scrolls, the second effect won't
+  // this only works if the window width is greater than 1000; but there's the issue that if user has already scrolled down, and THEN the window width goes below 1000, you won't be able to undo the effect that has already happened because both scroll up and scroll down can only happen when the window width is greater than 1000.  So if window width changes between scrolls, the second effect won't be executed.  SOLVED: in the else section of this condition (for when the window width is less than 100px) I've removed the animation and hidden the button; 
   if(window.innerWidth >= 1000){
 
 // if downward scroll passes 300px
@@ -40,7 +40,9 @@ if(window.scrollY > 150){
 headerNavEl.style.animation =  'headerNav2OpacityUp 1.4s ease-out forwards'
 lowerBtn.style.display = 'block'
 lowerBtn.style.animation = 'btnOpacity 1.4s ease-out forwards'
-serviceLink.style.cssText = 'padding: 10px 10px;'
+if(serviceLink){
+  serviceLink.style.cssText = 'padding: 10px 10px;'
+}
 
 
 
@@ -50,9 +52,9 @@ serviceLink.style.cssText = 'padding: 10px 10px;'
    headerNavEl.style.animation =  'headerNav2OpacityDown 1.4s ease-out backwards'
   lowerBtn.style.display = 'none'
 lowerBtn.style.animation = 'btnUnOpacity 1.4s ease-out forwards'
-if(!serviceLink.style.display == 'none'){
-  serviceLink.style.cssText = 'padding: 10px 30px;'
-}
+// if(!serviceLink.style.display == 'none'){
+//   serviceLink.style.cssText = 'padding: 10px 30px;'
+// }
 
 headerNavEl.style.zIndex = 1;
 }
@@ -66,8 +68,6 @@ if(serviceLink){
   serviceLink.style.cssText = 'padding: 10px 30px;'
 }
   }
-
-
 }
 
 let timesHovered = 0;
@@ -85,39 +85,14 @@ const serviceHoverLargeScreen = (event) =>{
   serviceList.classList.add('transform-menu')
 }
 
-// hover on media query
+// when user mouses over services link in mobile view, then the default submenu hides from dropdown and the alternative menu appears using an opacity transition
 const serviceHoverSmallScreen = (event) =>{
   event.preventDefault()
-  console.log('hover over services on small screen')
-  console.log('times hovered')
   timesHoveredSmall +=1;
-  console.log(timesHovered)
   // hide the regular drop down
   serviceList.style.cssText = 'display:none;'
-
   mobileServicesContainer.style.display = 'block'
-      // loop through node list, and on each element, toggle display none/block
-
-
-      // mobileServiceLinks.forEach(link =>{
-      //   if(link.style.display == 'block'){
-
-      //     link.style.display = 'none'
-
-
-      //   }else{
-      //     link.style.animation = 'btnOpacity 0.5s ease-out forwards'
-      //     link.style.display = 'block'
-
-
-      //   }
-
-
-
-      // })
- 
-
-
+  
 }
 
 
@@ -131,14 +106,12 @@ let currentWidth;
 // DETECT WINDOW RESIZE
 window.addEventListener('resize', (e) =>{
 currentWidth = e.target.innerWidth
-console.log('window resize')
-console.log(currentWidth)
+
 // show header nav in its normal state if screen moves over minimum size threshold. Without this, if it has been toggled to display:none when the screen is small, if the screen is resized to large, the header nav will remain hidden. 
 if(currentWidth > 999){
   headerNavEl.style.display = 'flex'
   mobileServicesContainer.style.display = 'none'
 }
-
 })
 
 
@@ -147,20 +120,13 @@ if(currentWidth > 999){
   serviceEl.addEventListener('mouseover', (event) =>{
     timesHovered += 1
     let actualWindowWidth = window.innerWidth
-    console.log('window width')
-    console.log(actualWindowWidth)
-
-    // the issue here is that we need to know if the window size has changed, but this function takes the 'initial' window size and does not recognize changes so there has to be some whay of getting a value of the resized window here so that the thresholds in the conditions will cause the execution of the large or small screen function. 
 
     if(actualWindowWidth > 999){
-console.log('above the threshold')
+
           // code to execute for large window sizes
       serviceHoverLargeScreen(event)
     }else{
- 
-  
-console.log('below the threshold')
-        // code to execute for small window sizes
+         // code to execute for small window sizes
       serviceHoverSmallScreen(event)
     }
   
@@ -174,12 +140,10 @@ serviceEl.addEventListener('mouseout', (event) =>{
   serviceList.classList.add('transform-menu')
 } )
 
-// on every header nav link, except the services link, on mouseover hide the container for services submenu on mobile display
-
+// on every header nav link, except the services link, on mouseover hide the container for services submenu when page is in mobile view
 headerNavElements.forEach(element => {
   if(element.tagName == 'A' && element.id == ''){
-console.log(element)
-console.log(element.innerText)
+// if element on the nodelist is an 'a' tage and has no id then it is not the services link so hide the mobile submenu for services
 element.addEventListener('mouseover', () =>{
   mobileServicesContainer.style.display = 'none'
 })
@@ -211,11 +175,3 @@ hamburgerEl.addEventListener('click', (e) =>{
   
 })
 
-
-// add display block on hover for service menu mobile display since, moving away from the parent element causes the submenu options to close
-
-// mobileServiceLinks.forEach{link}
-
-// MOBILE SERVICES SUB MENU HIDE - just realized what to do....  I guess you want the submenu to be open while you are hovering over the 'services' heading so, but when you mouseout, have them disappear - so you could actually just put the mouseout directly on the elements so when you leave any of them, then all links close, and then when you hover over the reast of the links, they also close the submenu..
-
-// alternatively you could nest the submenu inside a div and when you mouseout from 'that' div, then just hide the div, and then use mouseover on any other div apart from the services heading, for closing the same div
