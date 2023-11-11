@@ -103,12 +103,18 @@ font-size: 20px;
 color: rgb(218, 216, 216);
 padding: 10px 30px;
 text-decoration: none;
-display: none;
+display: block;
 border-bottom: 1px solid rgb(136, 133, 133);
 transition: 0.9s ease-in-out;
-opacity: 0;
+opacity: 1;
 }
 
+#mobile-services-container{
+width: inherit; 
+height: fit-content; 
+display: none;
+background-color: rgba(255, 47, 47, 0.76);
+}
 
 .header-link:hover{background-color: rgba(184, 187, 189, 0.478);}
 
