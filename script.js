@@ -9,6 +9,11 @@ let serviceLink = document.getElementById('header-link')
 let mobileServiceLinks = document.querySelectorAll('.services-menu-mobile')
 let aboutEl = document.getElementById('about')
 let mobileServicesContainer = document.getElementById('mobile-services-container')
+let corporateEventLink = document.getElementById('corporate-event')
+let eventUrl = 'https://www.absoluteeventsbycorrine.com/corporate-events-absolute-events'
+let socialUrl = 'https://www.absoluteeventsbycorrine.com/corporate-social-events-absolute-events'
+let corporateSocialLink = document.getElementById('corporate-social')
+
 console.log(mobileServiceLinks)
 console.log('nav bar')
 console.log(navbarEl)
@@ -183,6 +188,7 @@ hamburgerEl.addEventListener('click', (e) =>{
     if(headerNavEl.style.display == 'flex'){
       if(window.innerWidth < 1000){
       headerNavEl.style.display = 'none'
+      
 
       }else{
         // do n
@@ -197,3 +203,10 @@ hamburgerEl.addEventListener('click', (e) =>{
   
 })
 
+corporateEventLink.addEventListener('click', ()=>{
+  window.open(eventUrl)
+})
+
+corporateSocialLink.addEventListener('click', () =>{
+  window.open(socialUrl)
+})
