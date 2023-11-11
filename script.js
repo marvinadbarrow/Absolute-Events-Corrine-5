@@ -106,11 +106,7 @@ let submenuOpen = 0
 
       })
  
-if(submenuOpen === 1){
-  aboutEl.style.marginTop = '-200px'
-}else{
-  aboutEl.style.marginTop = '0ps'
-}
+
 
 }
 
