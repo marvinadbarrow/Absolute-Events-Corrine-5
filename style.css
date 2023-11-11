@@ -20,7 +20,14 @@ footer{display: flex; width: 100%;}
 
 .contact-elements{width: 60%; height: fit-content;}
 
-.container{display: flex; flex-direction: row; justify-content: space-around; width: 100vw; margin: auto; margin-left: 0px;}
+.container{display: flex; flex-direction: row; justify-content: space-around; width: 100vw; margin: auto; margin-left: 0px;
+height: fit-content; background-color: black;
+}
+
+.container2{width: 100%; height: 200px; background-color: grey;}
+.nav-bar{ position: fixed; top: 0;}
+
+
 .t-cards{width: 30%; height: fit-content; padding: 2%; border-radius: 10px; position: relative; margin: 20px 0px; background-color: rgba(206, 199, 199, 0.466); box-shadow: 0px 2px 20px rgb(204, 203, 203);}
 
 
@@ -47,9 +54,7 @@ body{width: 100vw; padding: 0;}
 
 .social-top a {padding: 5px; color: rgb(170, 169, 169);}
 
-.container{width: 100%; height: fit-content; background-color: black;}
-.container2{width: 100%; height: 200px; background-color: grey;}
-.nav-bar{ position: fixed; top: 0;}
+
 
 .header-nav{
 position: sticky;
@@ -62,6 +67,7 @@ box-sizing: border-box;
 background: rgba(0, 0, 0, 0);
 border-bottom: 0px solid white;
 z-index: 20;
+padding-bottom: 60px;
 
 }
 
@@ -85,6 +91,22 @@ padding: 10px 30px;
 border-radius: 10px;
 transition: 0.3s ease-in-out;
 }
+
+/* below is the sub menu items of the drop down menu in header nav when the media query has been activated for smaller screens */
+
+.services-menu-mobile{
+background-color: rgb(136, 133, 133); 
+border-radius: 0px; 
+border-bottom: 1px solid rgb(235, 230, 230); 
+text-align: center;
+font-size: 20px;
+color: rgb(218, 216, 216);
+padding: 10px 30px;
+text-decoration: none;
+display: none;
+}
+
+
 .header-link:hover{background-color: rgba(184, 187, 189, 0.478);}
 
 .fix-header-nav{
@@ -103,7 +125,7 @@ box-shadow: 2px 2px 40px rgb(36, 35, 35);
 width: 300px; 
 border-radius: 7px;
 padding: 7px;
-display: block;
+display: none;
 transition: 0.4s ease-in-out;
 
 }
@@ -149,6 +171,7 @@ transition: 0.4s ease-in-out;
 
 
 
+/* ANIMATION KEYFRAMES BELOW ARE USED TO TRANSITION THE NAVBAR AND HEADER TO DIFFERENT STYLE AS USER SCROLLS PAST THE 300px FROM TOP OF SCREEN THRESHOLD, IN EITHER UP OR DOWN DIRECTION. 
 /* for the main black nav bar to fade out  as it moves up out of the screen view when scrolling past 300px occurs) */
 @keyframes mainNavOpacityUp {
 
@@ -177,14 +200,6 @@ transition: 0.4s ease-in-out;
 }
 
 
-
-
-
-
-
-
-
-
 /* for the header (transparent bar beneath main nav) bar  scrolling past 300px occurs) */
 @keyframes headerNav2OpacityUp {
 
@@ -205,10 +220,6 @@ transition: 0.4s ease-in-out;
     }
 }
 
-
-
-
-
 @keyframes headerNavOpacityDown {
 
     0%{
@@ -223,10 +234,7 @@ transition: 0.4s ease-in-out;
 }
 
 
-
-
-
-
+/* opacity of buttons on scrolling past threshold of 300px */
 @keyframes btnOpacity {
     0%{
         opacity: 0;
@@ -255,26 +263,43 @@ opacity: 0;
 
 
 
-
+/* as long as screen width is less than 1000px use the following CSS rules. */
 @media screen and (max-width: 1000px) {
     .social-top, .contact-info, .learn-btn-upper, .logo{display: none;}
     .icon{display: block;}
- #services-list-container{display: none;}
+ 
     .container{
         flex-direction: column;
     align-items: center;
     }
+/* increase large button size so that all of text, which doesn't get smaller, fits on button
+and hide the button that normally appears in the header nav which substitutes the top nav button on scroll down
+*/
+    .float-btn{width: 80%;}
 
-    .float-btn{width: 60%;}
+    /* display header nav links flex column*/
     .header-link-container{
         clear: both;
     display: flex;
     flex-direction: column;
     }
     .header-link{background-color: rgba(0, 0, 0, 0.568); color: white; border-radius: 0px; border-bottom: 1px solid rgb(136, 133, 133); text-align: center;}
-    .header-nav{margin: 200px 0px 0px 0px; display: flex; flex-direction: column; width: 100%; height: fit-content; position: relative; top: -150px; margin-left:8%; display: none;}
+
+
+
+    .header-nav{margin: 200px 0px 0px 0px; display: flex; flex-direction: column; width: 100%; height: fit-content; position: relative; top: -150px; margin-left:8%; display: none;
+      }
+
+
     .learn-btn-lower{width: 100%;}
+    
     .t-cards{width: 60%;}
+
+#services-link{display: none;}
+.services-list-container{
+    display: none;
+}
+
 
   }
 

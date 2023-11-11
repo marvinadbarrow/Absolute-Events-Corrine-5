@@ -3,6 +3,12 @@ let headerNavEl = document.getElementById('header-nav')
 let btnTopNav = document.getElementById('btn-top-nav')
 let lowerBtn = document.getElementById('learn-btn-lower')
 let hamburgerEl = document.getElementById('hamburger-bars')
+let serviceEl = document.getElementById('services-main')
+let serviceList = document.getElementById('services-list-container')
+let serviceLink = document.getElementById('header-link')
+let mobileServiceLinks = document.querySelectorAll('.services-menu-mobile')
+let aboutEl = document.getElementById('about')
+console.log(mobileServiceLinks)
 console.log('nav bar')
 console.log(navbarEl)
 
@@ -11,13 +17,14 @@ console.log(headerNavEl)
 
 
 
-
+console.log(window.innerWidth)
 
 // on scroll down 
 window.onscroll = () =>{
-
+console.log(window.innerWidth)
   // only execute animation if window is outside of media query limit
-  if(window.innerWidth > 1000){
+  // this only works if the window width is greater than 1000; but there's the issue that if user has already scrolled down, and THEN the window width goes below 1000, you won't be able to undo the effect that has already happened because both scroll up and scroll down can only happen when the window width is greater than 1000.  So if window width changes between scrolls, the second effect won't
+  if(window.innerWidth >= 1000){
 
 // if downward scroll passes 300px
 if(window.scrollY > 150){
@@ -32,87 +39,78 @@ if(window.scrollY > 150){
 headerNavEl.style.animation =  'headerNav2OpacityUp 1.4s ease-out forwards'
 lowerBtn.style.display = 'block'
 lowerBtn.style.animation = 'btnOpacity 1.4s ease-out forwards'
+serviceLink.style.cssText = 'padding: 10px 10px;'
+
+
+
 
 }else if(-window.scrollY < 150){ // otherwise, if scrolling upward then
   navbarEl.style.animation =  'mainNavOpacityDown 0.5s ease-out backwards'
-  // navbarEl.style.animation =  'mainNavOpacityDown 0.5s ease-out backwards'
-  // navbarEl.style.display = 'flex'
-  // headerNavEl.style.cssText = 'position:relative; margin-top:100px'
-  // headerNavEl.classList.remove('fix-header-nav')
-  // btnTopNav.style.display = 'none'
-
-  headerNavEl.style.animation =  'headerNav2OpacityDown 1.4s ease-out backwards'
+   headerNavEl.style.animation =  'headerNav2OpacityDown 1.4s ease-out backwards'
   lowerBtn.style.display = 'none'
 lowerBtn.style.animation = 'btnUnOpacity 1.4s ease-out forwards'
+serviceLink.style.cssText = 'padding: 10px 30px;'
+headerNavEl.style.zIndex = 1;
 }
 
   }else{
-
+lowerBtn.style.display = 'none'
+console.log(headerNavEl)
+headerNavEl.style.animation = ''
+headerNavEl.style.zIndex = 1;
+navbarEl.style.cssText = 'display:block; display:flex; position:fixed; top:0;'
+serviceLink.style.cssText = 'padding: 10px 30px;'
   }
 
 
-
-// if(-window.scrollY < 280){
-//   navbarEl.style.animation =  'mainNavOpacityDown 0.5s ease-out backwards'
-// }
-
 }
 
+let timesHovered = 0;
+let timesHoveredSmall = 0;
 
-
-
-
-
-let serviceEl = document.getElementById('services-main')
-console.log(serviceEl)
-let serviceList = document.getElementById('services-list-container')
-console.log(serviceList)
-let navContainer = document.getElementById('navigation-container')
-
-
-// // change navbar colours on downward scroll past 280px
-// window.onscroll = () =>{
-// if(window.scrollY > 320){
-//   navContainer.classList.add('nav_dark')
-//   navContainer.style.animation = 'darkNav 0.9s ease-in-out 1'
-
-// }else{
-//   navContainer.classList.remove('nav_dark')
-//   navContainer.style.animation = ''
-
-// }
-// }
-
-
-
-if(window.innerWidth > 1000){
-
-
-// animate dropdown menu when service menu is hovered over
-serviceEl.addEventListener('mouseover', (event) =>{
-  console.log('hovering over services')
+// hover on large screens
+const serviceHoverLargeScreen = (event) =>{
+  console.log('hovering over services on large screen')
+  console.log('times hovered')
+  timesHovered +=1;
+  console.log(timesHovered)
   event.preventDefault()
   serviceList.style.cssText = 'display:block;'
   serviceList.style.animation = 'slideDown 0.7s ease-in-out 1'
   serviceList.classList.add('transform-menu')
- })
+}
 
- // keep dropdown menu visible on dropdown mouseover
- serviceList.addEventListener('mouseover', (event) =>{
+// hover on media query
+const serviceHoverSmallScreen = (event) =>{
+  event.preventDefault()
+  console.log('hover over services on small screen')
+  console.log('times hovered')
+  timesHoveredSmall +=1;
+  console.log(timesHovered)
+  // hide the drop down
   serviceList.style.cssText = 'display:none;'
-  serviceList.classList.add('transform-menu')
- })
+let submenuOpen = 0
+      // loop through node list, and on each element, toggle display none/block
+      mobileServiceLinks.forEach(link =>{
+        if(link.style.display == 'block'){
+          link.style.display = 'none'
 
- // hide dropdown menu on dropdown mouseout
- serviceList.addEventListener('mouseout', (event) =>{
-  serviceList.style.cssText = 'display:none;'
-  serviceList.classList.remove('transform-menu')
- })
- // hide dropdown menu on service menu mouseout
- serviceEl.addEventListener('mouseout', (event) =>{
-  serviceList.style.cssText = 'display:none;'
-  serviceList.classList.remove('transform-menu')
- })
+          submenuOpen = 0
+        }else{
+          link.style.display = 'block'
+
+        submenuOpen = 1
+        }
+
+
+
+      })
+ 
+if(submenuOpen === 1){
+  aboutEl.style.marginTop = '-200px'
+}else{
+  aboutEl.style.marginTop = '0ps'
+}
 
 }
 
@@ -120,13 +118,88 @@ serviceEl.addEventListener('mouseover', (event) =>{
 
 
 
+
+// variable for keeping track fo screen width
+let currentWidth;
+
+// DETECT WINDOW RESIZE
+window.addEventListener('resize', (e) =>{
+currentWidth = e.target.innerWidth
+console.log('window resize')
+console.log(currentWidth)
+// show header nav in its normal state if screen moves over minimum size threshold. Without this, if it has been toggled to display:none when the screen is small, if the screen is resized to large, the header nav will remain hidden. 
+if(currentWidth > 999){
+  headerNavEl.style.display = 'flex'
+}
+
+})
+
+
+
+  // CHANGE HOW SERVICE DROPDOWN BEHAVES when screen size changes from above or equal to specified threshold, to below the specified threshold
+  serviceEl.addEventListener('mouseover', (event) =>{
+    timesHovered += 1
+    let actualWindowWidth = window.innerWidth
+    console.log('window width')
+    console.log(actualWindowWidth)
+
+    // the issue here is that we need to know if the window size has changed, but this function takes the 'initial' window size and does not recognize changes so there has to be some whay of getting a value of the resized window here so that the thresholds in the conditions will cause the execution of the large or small screen function. 
+
+    if(actualWindowWidth > 999){
+console.log('above the threshold')
+          // code to execute for large window sizes
+      serviceHoverLargeScreen(event)
+    }else{
+ 
+  
+console.log('below the threshold')
+        // code to execute for small window sizes
+      serviceHoverSmallScreen(event)
+    }
+  
+   })
+  
+
+
+// serviceEl.addEventListener('mouseout', (event) =>{
+//   // for regular sized screens
+//   serviceList.style.cssText = 'display:none;'
+//   serviceList.classList.add('transform-menu')
+
+//   // for screens that meet the media query consitions
+//   mobileServiceLinks.forEach(link =>{
+//       link.style.display = 'none'
+//     })
+
+// } )
+
+
+   
+
 hamburgerEl.addEventListener('click', (e) =>{
   e.preventDefault()
-  console.log('menu click')
-  if(headerNavEl.style.display == 'flex'){
-    headerNavEl.style.display = 'none'
-  }else{
-    headerNavEl.style.display = 'flex'
-  }
+
+  console.log('checking window innerWidth')
+  console.log(window.innerWidth)
+
+
+    console.log('menu click')
+    if(headerNavEl.style.display == 'flex'){
+      if(window.innerWidth < 1000){
+      headerNavEl.style.display = 'none'
+      }else{
+        // do n
+      }
+    }else{
+      
+      headerNavEl.style.display = 'flex'
+    }
+  
+
   
 })
+
+
+// add display block on hover for service menu mobile display since, moving away from the parent element causes the submenu options to close
+
+// mobileServiceLinks.forEach{link}
