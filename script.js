@@ -160,10 +160,6 @@ console.log('below the threshold')
    })
   
 
-   serviceEl.addEventListener('click', (event) =>{
-    console.log(event)
-    event.preventDefault()
-   })
 
 // serviceEl.addEventListener('mouseout', (event) =>{
 //   // for regular sized screens
